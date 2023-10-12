@@ -24,8 +24,8 @@ let imageModalWindow = null;
 
 function onClickGalleryList(event) {
     event.preventDefault();    
-    const imgUrl = event.target.dataset['source'];
 
+    const imgUrl = event.target.dataset['source'];
     imageModalWindow = basicLightbox.create(
         `<img src="${imgUrl}" />`,
         {
@@ -37,7 +37,6 @@ function onClickGalleryList(event) {
             }
         }
     );
-
     imageModalWindow.show(() => {
         enableImageClickListener();
         enableImageEscapeKeyListener();
@@ -49,6 +48,8 @@ function onClickActiveImage(event) {
 }
 
 function onKeydownEscape(event) {
+    event.preventDefault();
+
     if (event.code === 'Escape') {
         imageModalWindow.close();
     }
